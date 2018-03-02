@@ -7,7 +7,7 @@ void radix_sort(int * A, int n)
 	using std::vector;
 	vector<vector<int>>bucket(10, vector<int>(n, 0)); //as bucket to store statistics
 	vector<int>pos(n);      //store number in units
-	vector<int>temp(n);     //store number which / 10
+	vector<int>temp(n);     //store number temp[] / 10
 	int B[10] = { 0 };      //count the number of whose units is pos
 	int biggest = A[0];
 	for (int i = 1; i < n; i++)
