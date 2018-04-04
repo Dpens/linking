@@ -16,49 +16,56 @@ cursor.execute('create table if not exists \
 #cursor.close()
 
 
-#@app.route('/')
-#def hello(name='Dpens'):
-    #return render_template('hello.html', name=name)
-
-def turn():
-	if request.methods == 'POST':
-		if request.form.get("sign in") == 'sign_in':
-			return render_template('hello.html')
-		elif request.form.get("log in") == 'log_in':
-			return render_template('log_in.html')
-
-
 @app.route('/')
 def start():
 	return render_template('start.html')
-	turn()
+
+@app.route('/register')
+def reg():
+	return render_template('hello.html')
+
+@app.route('/register', methods=['POST'])
+def reg_new():
+	xusername = request.form.get("username")
+	xpassword = request.form.get("psw")
+	cursor.execute('select * from userdb where id > 0')
+	results = cursor.fetchall()
+	xid = '0'
+	for row in results:
+		if xusername == row[1]:
+			flash('%s already exists'%xusername)
+			xid = '1'
+	if xid == '0':
+		cursor.execute('insert into userdb (id,username,password) values("%s","%s","%s")'%(xid,xusername,xpassword))
+		conn.commit()
+		return render_template('sign_in.html')
+	else:
+		return render_template('hello.html', messagebox='error')
 	
 
-@app.route('/',methods=['GET','POST'])
-def index():
-	if request.method == 'POST':
+@app.route('/login')
+def log_in():
+	return render_template('log_in.html')
+
+@app.route('/login', methods=['POST'])
+def log():
 		xusername = request.form.get("username")
 		xpassword = request.form.get("psw")
-		xid = '0'
-		if request.form.get("sign") == '注册':
-			cursor.execute('select * from userdb where id > 0')
-			results = cursor.fetchall()
-			for row in results:
-				if xusername == row[1]:
-					#tkinter.messagebox.showerror('error','%s already exists'%xusername)
-					flash('%s already exists'%xusername)
-					xid = '1'
+		cursor.execute('select * from userdb where id > 0')
+		results = cursor.fetchall()
+		temp = 0
+		for row in results:
+			if xusername == row[1] and xpassword == row[2]:
+				temp = 1
+		if temp == 0:
+			flash('username or password is error')
+			return render_template('log_in.html', messagebox='error')
 		else:
-			return render_template('hello.html')
-		if xid == '0':
-			cursor.execute('insert into userdb (id,username,password) values("%s","%s","%s")'%(xid,xusername,xpassword))
-			conn.commit()
-			cursor.close()
-			return render_template('sign_in.html')
-		return render_template('hello.html')
+			return render_template('Welcome.html')
 
 
 if __name__ == '__main__':
 	app.run(debug = True)
-
+	
+cursor.close()
 conn.close()
