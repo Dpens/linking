@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<title>log_in</title>
+
+<body>
+	<h1>log in</h1>
+	<ul>
+		<form method="POST">
+			User name:<br>
+			<li style="float: left;list-style-type: none;">
+				<input type="text" name="username">
+			</li>
+				<li style="list-style-type: none;">
+					{% for message in get_flashed_messages() %}  
+        				{{ message }}  
+    				{% endfor %} 
+    			</li>
+			<br><br>
+			User password:<br>
+			<li style="list-style-type: none;">
+				<input type="password" name="psw">
+			</li>
+			<br><br>
+			<li style="list-style-type: none;">
+				<input type="submit" name="actions" value="登陆">
+			</li>
+		</form>
+	</ul>
+</body>

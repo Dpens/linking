@@ -9,13 +9,28 @@
 <body>
 	<h1>Hello,welcome to this page</h1>
 	<!---<form name = "input" action="sign_in.html" method="get">-->
-	<form method="POST">
-		User name:<br>
-		<input type="text" name="username">
-		<br>
-		User password:<br>
-		<input type="password" name="psw">
-		<br><br>
-		<input type="submit" value="注册">
-	</form>
+	<div>
+		<ul>
+			<form method="POST">
+				User name:<br>
+				<li style="float: left;list-style-type: none;">
+					<input type="text" name="username">
+				</li>
+					<li style="list-style-type: none;">
+						{% for message in get_flashed_messages() %}  
+        					{{ message }}  
+    					{% endfor %} 
+    				</li>
+				<br><br>
+				User password:<br>
+				<li style="list-style-type: none;">
+					<input type="password" name="psw">
+				</li>
+				<br><br>
+				<li style="list-style-type: none;">
+					<input type="submit" name="actions" value="注册">
+				</li>
+			</form>
+		</ul>
+    </div>
 </body>
