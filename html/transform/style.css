@@ -1,0 +1,26 @@
+.box{
+	transition: 2s;
+	transform-style: preserve-3d;
+	position: relative;
+}
+.back, .front{
+	background-color: red;
+	width: 100px;
+	height: 100px;
+	backface-visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+
+
+.back{
+	transform: rotateY(180deg);
+}
+
+.container{
+	perspective: 1000;
+	width: 100px;
+	height: 100px;
+}

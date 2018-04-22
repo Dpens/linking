@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div class="container" id="odiv1">
+		<div class="box" id="odiv2">
+			<div class="front">
+				<p>front</p>
+			</div>
+			<div class="back">
+				<p>back</p>
+			</div>
+		</div>
+	</div>
+	<button onclick="rotate()">click</button>
+	<script>
+		var if_rotate = 0;
+		function rotate()
+		{
+			//var odiv1=document.getElementById('odiv1');
+			var odiv2=document.getElementById('odiv2');
+			// odiv1.style.webkitTransform='rotateY(180deg)'; 
+			if (!if_rotate){
+				odiv2.style.webkitTransform='rotateY(180deg)';
+				if_rotate = 1;
+			}
+			else
+			{
+				odiv2.style.webkitTransform='rotateY(0deg)';
+				if_rotate = 0;
+			}
+		}
+	</script>
+</body>
+</html>
