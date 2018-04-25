@@ -3,20 +3,28 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-<body>
+<body style="background-color: #FFF0F5">
+	<audio src="BGM/music.mp3" autoplay="autoplay" loop="loop" id="BGM">你的浏览器不支持该音频</audio>
 	<div class="container" id="odiv1">
 		<div class="box" id="odiv2">
 			<div class="front">
-				<p>front</p>
+				<a href="javascript:void(0)" onclick="rotate()">front(点击翻转)</a>
+				<img src="img/贺卡(test).jpg">
+				<!-- <p onclick="rotate()">front</p> -->
 			</div>
 			<div class="back">
-				<p>back</p>
+				<a href="javascript:void(0)" onclick="rotate()">back(点击翻转)</a>
+				<img src="img/贺卡正面(test).jpg">
+				<!-- <p onclick="rotate()">back</p> -->
+				<div class="head_obj">
+					<h1>head</h1>
+				</div>
 			</div>
 		</div>
 	</div>
-	<button onclick="rotate()">click</button>
+	<!-- <button onclick="rotate()">click</button> -->
 	<script>
 		var if_rotate = 0;
 		function rotate()
@@ -34,6 +42,9 @@
 				if_rotate = 0;
 			}
 		}
+	</script>
+	<script>
+		document.getElementById('BGM').volume = 0.5;
 	</script>
 </body>
 </html>

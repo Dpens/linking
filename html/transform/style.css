@@ -2,11 +2,12 @@
 	transition: 2s;
 	transform-style: preserve-3d;
 	position: relative;
+	top: 50px;
+	left: 290px;
 }
 .back, .front{
-	background-color: red;
-	width: 100px;
-	height: 100px;
+	width: 945px;
+	height: 600px;
 	backface-visibility: hidden;
 	position: absolute;
 	top: 0;
@@ -21,6 +22,19 @@
 
 .container{
 	perspective: 1000;
-	width: 100px;
-	height: 100px;
+	width: 945px;
+	height: 600px;
+	top: 50px;
+	left: 290px;
+}
+.head_obj{
+	top: 100px;
+	left: 350px;
+	width: 50px;
+	height: 20px;
+	position: absolute;
+}
+
+a{
+	text-decoration: none;
 }
